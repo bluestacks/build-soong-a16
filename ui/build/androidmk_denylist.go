@@ -61,6 +61,52 @@ var androidmk_denylist []string = []string{
 
 var androidmk_allowlist []string = []string{
 	"bootable/deprecated-ota/updater/Android.mk",
+	// Android-x86 ISO installer (ported from app-player android-13)
+	"bootable/newinstaller/Android.mk",
+	"device/generic/common/nativebridge/Android.mk",
+	"device/generic/common/app/Android.mk",
+	// BlueStacks BST native (Baklava64 / android-x86)
+	"packages/apps/BstCommandProcessor/Android.mk",
+	"packages/apps/BstCommandProcessor/jni/Android.mk",
+	"frameworks/base/services/java/com/bluestacks/server/native/Android.mk",
+	"external/bluestacks/sensors/Android.mk",
+	"external/bluestacks/bstshutdown/Android.mk",
+	"external/bluestacks/bstshutdown/shutdown_binary/Android.mk",
+	"external/bluestacks/bstshutdown/shutdown_setprop/Android.mk",
+	"external/bluestacks/bstgps/Android.mk",
+	"external/bluestacks/bstsyncfs/Android.mk",
+	"external/bluestacks/bstfolder/Android.mk",
+	"external/alsa-lib/android/Android.mk",
+	"external/alsa-utils/android/Android.mk",
+	"external/efibootmgr/src/Android.mk",
+	"external/efivar/src/Android.mk",
+	"external/ffmpeg/Android.mk",
+	"external/ffmpeg/libavcodec/Android.mk",
+	"external/ffmpeg/libavformat/Android.mk",
+	"external/ffmpeg/libavutil/Android.mk",
+	"external/ffmpeg/libswresample/Android.mk",
+	"external/ffmpeg/libswscale/Android.mk",
+	"external/stagefright-plugins/Android.mk",
+	"external/stagefright-plugins/data/Android.mk",
+	"external/stagefright-plugins/extractor/Android.mk",
+	"external/stagefright-plugins/omx/Android.mk",
+	"external/stagefright-plugins/utils/Android.mk",
+	"prebuilts/ktools/ndk-r23/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/android/cpufeatures/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/android/native_app_glue/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/android/ndk_helper/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/android/renderscript/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/android/support/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/cxx-stl/llvm-libc++abi/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/cxx-stl/llvm-libc++/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/googletest/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/shaderc/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/shaderc/libshaderc/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/shaderc/libshaderc_util/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/shaderc/third_party/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/shaderc/third_party/glslang/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/shaderc/third_party/spirv-tools/Android.mk",
+	"prebuilts/ktools/ndk-r23/sources/third_party/vulkan/src/build-android/jni/Android.mk",
 }
 
 func getAllLines(ctx Context, filename string) []string {
@@ -76,17 +122,8 @@ func getAllLines(ctx Context, filename string) []string {
 }
 
 func blockAndroidMks(ctx Context, androidMks []string) {
-	allowlist_files := []string{
-		"vendor/google/build/androidmk/allowlist.txt",
-		"device/google/harriet/androidmk/allowlist.txt",
-	}
-	for _, allowlist_file := range allowlist_files {
-		allowlist := getAllLines(ctx, allowlist_file)
-		androidmk_allowlist = append(androidmk_allowlist, allowlist...)
-	}
-	slices.Sort(androidmk_allowlist)
-	androidmk_allowlist = slices.Compact(androidmk_allowlist)
-
+	// BST: allowlist merged into hardcoded androidmk_allowlist above,
+	// so vendor/google/build/androidmk/ is no longer required.
 	denylist := getAllLines(ctx, "vendor/google/build/androidmk/denylist.txt")
 	androidmk_denylist = append(androidmk_denylist, denylist...)
 
