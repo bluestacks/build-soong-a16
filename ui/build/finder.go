@@ -141,6 +141,19 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 
 	// Stop searching a subdirectory recursively after finding an Android.mk.
 	androidMks := f.FindFirstNamedAt(".", "Android.mk")
+	// BlueStacks: out-of-tree Android.mk paths (same as android-13 app-player).
+	outsideModList := []string{
+		"../hd/Source/vmsg/guest/Android.mk",
+		"../hd/Source/xpl/Android.mk",
+		"../hd/Source/tools/bstconf/Android.mk",
+		"../hd/Source/tools/bstchkdata/Android.mk",
+		"../hd/Source/hcall/guest/Android.mk",
+		"../hd/Source/gcall/guest/Android.mk",
+		"../ggl/goldfish-opengl-pie/Android.mk",
+	}
+	for _, outsideMod := range outsideModList {
+		androidMks = append(androidMks, outsideMod)
+	}
 	androidMks = ignoreSomeAndroidMks(androidMks)
 	blockAndroidMks(ctx, androidMks)
 	err := dumpListToFile(ctx, config, androidMks, filepath.Join(dumpDir, "Android.mk.list"))
