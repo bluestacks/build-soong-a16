@@ -222,6 +222,8 @@ javax\.microedition\.khronos\.egl
 android
 com\.bluestacks\.os
 com\.bluestacks\.os\..*
+com\.bluestacks\.internal
+com\.bluestacks\.internal\..*
 
 ###################################################
 # apache-xml.jar
