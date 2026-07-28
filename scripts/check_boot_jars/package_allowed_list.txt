@@ -220,6 +220,8 @@ javax\.microedition\.khronos\.opengles
 javax\.microedition\.khronos\.egl
 
 android
+com\.bluestacks\.os
+com\.bluestacks\.os\..*
 
 ###################################################
 # apache-xml.jar

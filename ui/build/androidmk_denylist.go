@@ -61,6 +61,19 @@ var androidmk_denylist []string = []string{
 
 var androidmk_allowlist []string = []string{
 	"bootable/deprecated-ota/updater/Android.mk",
+	"bootable/newinstaller/Android.mk",
+	"device/generic/common/nativebridge/Android.mk",
+	"device/generic/common/app/Android.mk",
+	"packages/apps/BstCommandProcessor/Android.mk",
+	"packages/apps/BstCommandProcessor/jni/Android.mk",
+	"frameworks/base/services/java/com/bluestacks/server/native/Android.mk",
+	"external/bluestacks/sensors/Android.mk",
+	"external/bluestacks/bstshutdown/Android.mk",
+	"external/bluestacks/bstshutdown/shutdown_binary/Android.mk",
+	"external/bluestacks/bstshutdown/shutdown_setprop/Android.mk",
+	"external/bluestacks/bstgps/Android.mk",
+	"external/bluestacks/bstsyncfs/Android.mk",
+	"external/bluestacks/bstfolder/Android.mk",
 }
 
 func getAllLines(ctx Context, filename string) []string {

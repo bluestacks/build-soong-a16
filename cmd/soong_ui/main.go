@@ -468,6 +468,14 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 		description: "Build action: builds all of the modules in the current directory and their dependencies.",
 		action:      build.BUILD_MODULES_IN_A_DIRECTORY,
 	}, {
+		name:        "modules-in-a-dir-no-deps",
+		description: "Build action: builds all of the modules in the current directory without their dependencies.",
+		action:      build.BUILD_MODULES_IN_A_DIRECTORY,
+	}, {
+		name:        "modules-in-dirs-no-deps",
+		description: "Build action: builds all of the modules in the supplied directories without their dependencies.",
+		action:      build.BUILD_MODULES_IN_DIRECTORIES,
+	}, {
 		name:        "modules-in-dirs",
 		description: "Build action: builds all of the modules in the supplied directories and their dependencies.",
 		action:      build.BUILD_MODULES_IN_DIRECTORIES,
