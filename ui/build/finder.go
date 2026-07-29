@@ -149,6 +149,7 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 		"../hd/Source/tools/bstchkdata/Android.mk",
 		"../hd/Source/hcall/guest/Android.mk",
 		"../hd/Source/gcall/guest/Android.mk",
+		"../ggl/goldfish-opengl-pie/Android.mk",
 	}
 	for _, outsideMod := range outsideModList {
 		androidMks = append(androidMks, outsideMod)
