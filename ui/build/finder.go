@@ -150,6 +150,9 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 		"../hd/Source/hcall/guest/Android.mk",
 		"../hd/Source/gcall/guest/Android.mk",
 	}
+	if os.Getenv("BST_BUILD_EXTERNAL_GOLDFISH") == "true" {
+		outsideModList = append(outsideModList, "../ggl/goldfish-opengl-pie/Android.mk")
+	}
 	for _, outsideMod := range outsideModList {
 		androidMks = append(androidMks, outsideMod)
 	}
@@ -241,6 +244,15 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 
 	// Recursively look for all Android.bp files
 	androidBps := f.FindNamedAt(".", "Android.bp")
+	if os.Getenv("BST_BUILD_EXTERNAL_GOLDFISH") == "true" {
+		filtered := androidBps[:0]
+		for _, bp := range androidBps {
+			if !strings.HasPrefix(bp, "hardware/google/gfxstream/") {
+				filtered = append(filtered, bp)
+			}
+		}
+		androidBps = filtered
+	}
 	if len(androidBps) == 0 {
 		ctx.Fatalf("No Android.bp found")
 	}
