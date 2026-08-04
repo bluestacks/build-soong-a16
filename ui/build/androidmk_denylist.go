@@ -66,6 +66,7 @@ var androidmk_allowlist []string = []string{
 	"device/generic/common/app/Android.mk",
 	"packages/apps/BstCommandProcessor/Android.mk",
 	"packages/apps/BstCommandProcessor/jni/Android.mk",
+	"packages/apps/BstSettings/Android.mk",
 	"frameworks/base/services/java/com/bluestacks/server/native/Android.mk",
 	"external/bluestacks/sensors/Android.mk",
 	"external/bluestacks/bstshutdown/Android.mk",
