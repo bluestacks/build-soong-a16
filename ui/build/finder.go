@@ -147,6 +147,7 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 		"../hd/Source/xpl/Android.mk",
 		"../hd/Source/tools/bstconf/Android.mk",
 		"../hd/Source/tools/bstchkdata/Android.mk",
+		"../hd/Source/tools/bstsetcf/Android.mk",
 		"../hd/Source/hcall/guest/Android.mk",
 		"../hd/Source/gcall/guest/Android.mk",
 		"../ggl/goldfish-opengl-pie/Android.mk",
