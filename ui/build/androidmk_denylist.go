@@ -82,6 +82,7 @@ var androidmk_allowlist []string = []string{
 	"external/stagefright-plugins/utils/Android.mk",
 	"frameworks/base/services/java/com/bluestacks/server/native/Android.mk",
 	"frameworks/av/drm/mediadrm/plugins/widevine/libwvdrmengine/Android.mk",
+	"frameworks/av/drm/mediadrm/plugins/widevine/hidl/Android.mk",
 	"external/bluestacks/sensors/Android.mk",
 	"external/bluestacks/bstshutdown/Android.mk",
 	"external/bluestacks/bstshutdown/shutdown_binary/Android.mk",
