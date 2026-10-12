@@ -143,11 +143,12 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 	androidMks := f.FindFirstNamedAt(".", "Android.mk")
 	// BlueStacks: out-of-tree Android.mk paths (same as android-13 app-player).
 	// Both goldfish trees sit next to this Android tree. android_x86_64 keeps
-	// goldfish-opengl-pie; android_arm64 uses the Mac tree checked out as
-	// goldfish-opengl. An unset product keeps the Windows path.
+	// goldfish-opengl-pie; android_arm64 uses the Mac tree mounted by the
+	// app-player superproject as goldfish-opengl-mac. An unset product keeps
+	// the Windows path.
 	goldfishMk := "../ggl/goldfish-opengl-pie/Android.mk"
 	if product, err := config.TargetProductOrErr(); err == nil && product == "android_arm64" {
-		goldfishMk = "../ggl/goldfish-opengl/Android.mk"
+		goldfishMk = "../ggl/goldfish-opengl-mac/Android.mk"
 	}
 	outsideModList := []string{
 		"../hd/Source/vmsg/guest/Android.mk",
